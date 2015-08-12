@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-	"devDependencies": {
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
     "gulp": "*",
     "gulp-coffee": "*",
     "gulp-concat": "*",
@@ -17,6 +19,7 @@
     "gulp-plumber": "*",
     "gulp-sass": "*",
     "gulp-uglify": "*",
-    "gulp-util": "*"
-	}
+    "gulp-util": "*",
+    "mongoose": "^4.1.2"
+  }
 }

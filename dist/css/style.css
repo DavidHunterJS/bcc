@@ -1,52 +1,45 @@
-body {
-  margin-top: 25px;
-  font-size: 13px;
-  font-family: Lucida Grande,Helvetica,Arial,Verdana,sans-serif; }
-
 #mainWrapper {
-  width: 90%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  display: inline-flex; }
 
 #calendar {
   width: 80%;
-  float: left; }
+  float: left;
+  margin-right: 2px; }
 
 #inputWrapper {
+  float: right;
   width: 18%;
-  float: right; }
+  padding: 10px; }
 
-#txt_name {
+.main-border {
+  border: 2px solid #3a87ad;
+  border-radius: 8px; }
+
+.flex {
+  display: flex; }
+
+.width-100 {
   width: 100%; }
 
-#clear_events {
-  width: 100%; }
+.pointer {
+  cursor: pointer; }
 
-#btn {
-  width: 100%; }
+.right {
+  text-align: right; }
 
-p {
-  font-family: Droid Sans, sans-serif;
-  color: #0587D3;
-  background: #ECF5FA;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: 700;
-  font-size: 15px; }
+.hidden {
+  display: none; }
 
-#listLabel {
-  text-align: center;
-  font-family: Droid Sans, sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.1em;
-  margin-bottom: 3px;
-  margin-top: 20px; }
+.rm-border {
+  border: 0; }
 
-#nameList div {
-  font-family: Droid Sans, sans-serif;
-  font-size: large; }
-
-#nameList {
+.list {
+  font-family: "Droid Sans", sans-serif;
+  font-size: large;
   background: #ECF5FA;
   padding: 5px;
   color: #0587D3; }
+  .list :hover {
+    font-weight: bold; }

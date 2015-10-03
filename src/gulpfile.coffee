@@ -33,13 +33,13 @@ do ->
       .pipe connect.reload()###
   
   gulp.task 'sass', ->
-  gulp.src('*.sass')
-    .pipe(sass(
-      indentedSyntax: true
-      errLogToConsole: true
-    )).on('error', gutil.log)
-    .pipe(gulp.dest('../dist/css/'))
-    .pipe connect.reload()
+    gulp.src('./sass/*.sass')
+      .pipe(sass(
+        indentedSyntax: true
+        errLogToConsole: true
+      )).on('error', gutil.log)
+      .pipe(gulp.dest('../dist/css/'))
+      .pipe connect.reload()
 
   gulp.task 'coffeeTask', ->
     gulp.src('./coffee/*.coffee')

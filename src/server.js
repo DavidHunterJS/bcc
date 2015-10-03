@@ -4,24 +4,34 @@
 // =============================================================================
 
 // call the packages we need
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');
-var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost:27017');
-var User     = require('./app/models/User');
+var express    = require('express'),           // call express
+    app        = express(),                    // define our app using express
+    bodyParser = require('body-parser'),       // lets me get post data from req.body
+    mongoose   = require('mongoose'),          // a small fury animal that talks to mongo
+    User       = require('./app/models/User'), // the mongoose model/actress
+    path       = require('path');              // used by express to serve static file
 
+mongoose.connect('mongodb://localhost:27017'); // command to connect to local mongodb
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
+// bodyParser() will let us get the data from a POST
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // set our port
+var port = process.env.PORT || 8080; // set our port
+var router = express.Router(); // get an instance of the express Router
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();              // get an instance of the express Router
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+    console.log("It's happening!");
+});
+
+// route to serve static file, this is the main page of the app.
+// router.get('/', function(req, res) {
+//   res.json({ message: 'hooray! welcome to our api!' });
+// });
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -31,41 +41,17 @@ router.use(function(req, res, next) {
 });
 
 
-// create a new user called chris
-var chris = new User({
-  name: 'Chris',
-  username: 'sevilayha',
-  password: 'password' 
-});
-
-// call the custom method. this will just add -dude to his name
-// user will now be Chris-dude
-chris.dudify(function(err, name) {
-  if (err) throw err;
-
-  console.log('Your new name is ' + name);
-});
-
-// call the built-in save method to save to the database
-chris.save(function(err) {
-  if (err) throw err;
-
-  console.log('User saved successfully!');
-})
 
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
-});
+
 
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/api', router);
+app.use('/', router);
 
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Magic is happening right now at http://localhost:' + port);

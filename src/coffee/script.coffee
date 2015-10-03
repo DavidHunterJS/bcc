@@ -64,7 +64,10 @@
 		namesArr = []
 		namesArr.push evt.title for evt in getLocalStorage()
 		$('#nameList').empty()
+		$('#nameList').fadeIn(500)
+		$('#clear_events').fadeIn(500).removeClass "hidden"
 		$('#nameList').append "<div> #{name} </div>" for name in namesArr
+		$('#nameList').removeClass "hidden"
 		return
 	addNamesToCalendar = ->
 		console.log "addNamesToCalendar fired"
@@ -156,8 +159,10 @@
 	#clears all events and removes the name list from the DOM
 	clearEvents = (e) ->
 		e.preventDefault()
-		$('#calendar').fullCalendar "removeEvents"
+		$("#calendar").fullCalendar "removeEvents"
 		window.localStorage.clear()
+		$("#nameList").hide 500
+		$("#clear_events").hide(500).addClass "hidden"
 		$("#nameList").empty()
 		focusAndClear()
 		console.log "clear events fired"
@@ -179,14 +184,34 @@
 	$("#txt_name").bind "keydown", (e) ->
 		if e.keyCode is 13 then addAName e
 		return
+	$("#txt_name").hover(
+		-> $("#txt_name-msg").fadeIn "fast", ->
+			$(this).removeClass "hidden"
+		-> $("#txt_name-msg").fadeOut "fast", ->
+			$(this).addClass "hidden"
+	)
 	$("#addName").bind "click", (e) ->
 		addAName e
 		return
 	$("#clear_events").bind "click", (e) ->
 		clearEvents e
 		return
+	$("#clear_events").hover(
+		-> $(this).fadeOut "fast", ->
+			$(this).attr( "value" , "Remove All").removeClass("right").fadeIn()
+		-> $(this).fadeOut "fast", ->
+			if ! $("#clear_events").hasClass "hidden"
+				$(this).attr( "value" , "-").addClass("right").fadeIn()
+    return
+ )
 	$("#nameList").bind "dblclick", (e) ->
 		removeAName e
 		return
+	$("#nameList").hover(
+		-> $("#list-msg").fadeIn "slow", ->
+			$(this).removeClass "hidden"
+		-> $("#list-msg").fadeOut "slow", ->
+			$(this).addClass "hidden"
+	)
 	return
 )	jQuery

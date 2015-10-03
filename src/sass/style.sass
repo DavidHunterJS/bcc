@@ -1,52 +1,49 @@
-body 
-	margin-top: 25px
-	font-size: 13px
-	font-family: Lucida Grande,Helvetica,Arial,Verdana,sans-serif
+// main font
+$font-droid: 700 15px "Droid Sans", sans-serif
 
-#mainWrapper 
-	width: 90%
+// main layout stuff
+#mainWrapper
 	margin-left: auto
 	margin-right: auto
-
+	display: inline-flex
 #calendar
 	width: 80%
 	float: left
-
+	margin-right: 2px
 #inputWrapper 
-	width: 18%
 	float: right
+	width: 18%
+	padding: 10px
 
-#txt_name 
+// border decoration for the two main sections
+.main-border
+	border: 2px solid #3a87ad
+	border-radius: 8px
+// makes elements inline
+.flex
+	display: flex
+// makes element's width 100% of parent element
+.width-100
 	width: 100%
-
-#clear_events 
-	width: 100%
-
-#btn 
-	width: 100%
-
-p 
-	font-family: Droid Sans, sans-serif
-	color: #0587D3
-	background: #ECF5FA
-	padding: 5px
-	border-radius: 5px
-	font-weight: 700
-	font-size: 15px
-
-#listLabel
-	text-align: center
-	font-family: Droid Sans, sans-serif
-	font-size: 15px
-	letter-spacing: 0.1em
-	margin-bottom: 3px
-	margin-top: 20px
-
-#nameList div
-	font-family: Droid Sans, sans-serif
+// changes mouse cursor to hand 
+.pointer
+	cursor: pointer
+// align text to the right
+.right
+	text-align: right
+// hides an element
+.hidden
+	display: none
+// removes all rounded borders from an element
+.rm-border
+	border: 0
+// styles the name list
+.list
+	font-family: "Droid Sans", sans-serif
 	font-size: large
-
-#nameList
 	background: #ECF5FA
 	padding: 5px
 	color: #0587D3
+	// makes names bold when hovered
+	:hover
+		font-weight: bold

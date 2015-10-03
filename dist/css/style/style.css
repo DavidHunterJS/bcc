@@ -1,0 +1,52 @@
+body {
+  margin-top: 25px;
+  font-size: 13px;
+  font-family: Lucida Grande,Helvetica,Arial,Verdana,sans-serif; }
+
+#mainWrapper {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+
+#calendar {
+  width: 80%;
+  float: left; }
+
+#inputWrapper {
+  width: 18%;
+  float: right; }
+
+#txt_name {
+  width: 100%; }
+
+#clear_events {
+  width: 100%; }
+
+#btn {
+  width: 100%; }
+
+p {
+  font-family: Droid Sans, sans-serif;
+  color: #0587D3;
+  background: #ECF5FA;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 15px; }
+
+#listLabel {
+  text-align: center;
+  font-family: Droid Sans, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+  margin-top: 20px; }
+
+#nameList div {
+  font-family: Droid Sans, sans-serif;
+  font-size: large; }
+
+#nameList {
+  background: #ECF5FA;
+  padding: 5px;
+  color: #0587D3; }

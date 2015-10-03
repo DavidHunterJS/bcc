@@ -61,10 +61,13 @@
       namesArr.push(evt.title);
     }
     $('#nameList').empty();
+    $('#nameList').fadeIn(500);
+    $('#clear_events').fadeIn(500).removeClass("hidden");
     for (l = 0, len1 = namesArr.length; l < len1; l++) {
       name = namesArr[l];
       $('#nameList').append("<div> " + name + " </div>");
     }
+    $('#nameList').removeClass("hidden");
   };
   addNamesToCalendar = function() {
     var arr, dayCounter, dayNumber, dayz, evtL, hour, i, nd, newEventArray;
@@ -164,8 +167,10 @@
   }
   clearEvents = function(e) {
     e.preventDefault();
-    $('#calendar').fullCalendar("removeEvents");
+    $("#calendar").fullCalendar("removeEvents");
     window.localStorage.clear();
+    $("#nameList").hide(500);
+    $("#clear_events").hide(500).addClass("hidden");
     $("#nameList").empty();
     focusAndClear();
     console.log("clear events fired");
@@ -199,13 +204,42 @@
       addAName(e);
     }
   });
+  $("#txt_name").hover(function() {
+    return $("#txt_name-msg").fadeIn("fast", function() {
+      return $(this).removeClass("hidden");
+    });
+  }, function() {
+    return $("#txt_name-msg").fadeOut("fast", function() {
+      return $(this).addClass("hidden");
+    });
+  });
   $("#addName").bind("click", function(e) {
     addAName(e);
   });
   $("#clear_events").bind("click", function(e) {
     clearEvents(e);
   });
+  $("#clear_events").hover(function() {
+    return $(this).fadeOut("fast", function() {
+      return $(this).attr("value", "Remove All").removeClass("right").fadeIn();
+    });
+  }, function() {
+    return $(this).fadeOut("fast", function() {
+      if (!$("#clear_events").hasClass("hidden")) {
+        $(this).attr("value", "-").addClass("right").fadeIn();
+      }
+    });
+  });
   $("#nameList").bind("dblclick", function(e) {
     removeAName(e);
+  });
+  $("#nameList").hover(function() {
+    return $("#list-msg").fadeIn("slow", function() {
+      return $(this).removeClass("hidden");
+    });
+  }, function() {
+    return $("#list-msg").fadeOut("slow", function() {
+      return $(this).addClass("hidden");
+    });
   });
 })(jQuery);
